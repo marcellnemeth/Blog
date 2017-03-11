@@ -32,14 +32,14 @@ public class PostController {
 
         postService.save(vo);
 
-        response.sendRedirect("/index.jsp");
+        response.sendRedirect("/");
     }
 
-    @RequestMapping(path = "/")
+    @RequestMapping(value = {"","/","public/index"})
     public ModelAndView readPost(){
         List<PostVO> posts = (List<PostVO>) postService.findAll();
         String text= posts.get(1).getTextArea();
-        return new ModelAndView("index","posts",posts);
+        return new ModelAndView("public/index","posts",posts);
     }
 
 }

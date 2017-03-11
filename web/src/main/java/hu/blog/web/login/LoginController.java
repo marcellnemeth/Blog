@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
 
-	private static final String LOGIN_JSP_URL = "public/login";
+	private static final String LOGIN_JSP_URL = "/";
 	private static final String SECURED_JSP_URL = "secured/secured";
 	@Autowired
 	UserService userService;

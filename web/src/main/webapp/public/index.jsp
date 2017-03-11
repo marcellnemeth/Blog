@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 
 <html lang="en">
@@ -21,16 +21,12 @@
     <script src="<c:url value="/resources/js/index.js"/>"></script>
     <script src="<c:url value="/resources/js/blog.js"/>"></script>
     <!-- Bootstrap core CSS -->
-    <link href="<c:url value="resources/css/bootstrap.min.css"/>"
+    <link href="<c:url value="../resources/css/bootstrap.min.css"/>"
           rel="stylesheet">
 
 
-    <!-- Custom styles for this template -->
-    <link href="<c:url value="resources/css/blog.css"/>" rel="stylesheet">
+    <link href="<c:url value="../resources/css/blog.css"/>" rel="stylesheet">
 
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -41,7 +37,7 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item active" href="<c:url value="/index.jsp"/>">Home</a>
+            <a class="blog-nav-item active" href="<c:url value="/"/>">Home</a>
 
             <c:if test="${sessionScope.user ==null}">
                 <a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
@@ -67,47 +63,60 @@
         <h1 class="blog-title">Blog</h1>
         <p></p>
 
-        <button class="btn btn-info" id="formOpen">CREATE NEW POST</button>
+        <button class="btn btn-info" data-toggle="modal" data-target="#myModal">CREATE NEW POST</button>
     </div>
-    <div class="row" id="myDiv">
-        <div class="col-md-6">
-            <form id="blogForm" action="<c:url value="new" ></c:url>" method="post">
-                <div class="form-group">
-                    <label for="blogFormName">Name</label>
-                    <input type="text" class="form-control" id="blogFormName" name="blogFormName">
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
                 </div>
+                <form id="blogForm" action="<c:url value="new" ></c:url>" method="post" style="padding: 20px">
+                    <div class="form-group">
+                        <label for="blogFormName">Name</label>
+                        <input type="text" class="form-control" id="blogFormName" name="blogFormName">
+                    </div>
 
-                <div class="form-group">
-                    <label for="blogFormTitle">Title</label>
-                    <input type="text" class="form-control" id="blogFormTitle" name="blogFormTitle">
+                    <div class="form-group">
+                        <label for="blogFormTitle">Title</label>
+                        <input type="text" class="form-control" id="blogFormTitle" name="blogFormTitle">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogFormPost">Post</label>
+                        <textarea class="form-control" rows="14" id="blogFormPost" name="blogFormPost"></textarea>
+
+                    </div>
+
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="formSubmit">SEND</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
+                </form>
+            </div>
 
-                <div class="form-group">
-                    <label for="blogFormPost">Post</label>
-                    <textarea class="form-control" rows="14" id="blogFormPost" name="blogFormPost"></textarea>
-
-                </div>
-
-                <button  type="submit" class="btn btn-primary" id="formSubmit">SEND</button>
-            </form>
         </div>
     </div>
 
-    <div class="row">
-        <p>igen ${ja}</p>
-    </div>
+
     <div class="row">
 
         <div class="col-sm-8 blog-main">
             <c:forEach items="${posts}" var="post">
-            <div class="blog-post" >
-                <h1><c:out value="${post.title}"/></h1>
-                <p></p>
-                <p class="blog-post-meta">
-                    my_date <a href="#">${post.name}</a></p>
-                <p></p>
-                <p>${post.textArea}</p>
-            </div>
+                <div class="blog-post">
+                    <h1><c:out value="${post.title}"/></h1>
+                    <p></p>
+                    <p class="blog-post-meta">
+                        my_date <a href="#">${post.name}</a></p>
+                    <p></p>
+                    <p>${post.textArea}</p>
+                </div>
             </c:forEach>
 
             <nav>
@@ -183,7 +192,7 @@
     || document
         .write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
 </script>
-<script src="resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     function getMyContextPath() {
         return "<c:out value="${pageContext.request.contextPath}" />";
