@@ -2,6 +2,7 @@ package hu.blog.web.register;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 
 public class RegisterForm {
 

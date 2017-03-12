@@ -38,7 +38,6 @@ public class PostController {
     @RequestMapping(value = {"","/","public/index"})
     public ModelAndView readPost(){
         List<PostVO> posts = (List<PostVO>) postService.findAll();
-        String text= posts.get(1).getTextArea();
         return new ModelAndView("public/index","posts",posts);
     }
 

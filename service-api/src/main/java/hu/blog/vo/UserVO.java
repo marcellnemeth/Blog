@@ -3,6 +3,8 @@ package hu.blog.vo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 public class UserVO {
@@ -17,4 +19,5 @@ public class UserVO {
     private String location;
     private String phone;
     private String img;
+    private String userRole;
 }

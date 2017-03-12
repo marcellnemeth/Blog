@@ -33,6 +33,8 @@ public class RegisterController {
 		vo.setDate_of_birth(register.getDate_of_birth());
 		vo.setLocation(register.getLocation());
 		vo.setPhone(register.getPhone());
+		vo.setImg("https://randomuser.me/api/portraits/men/11.jpg");
+		vo.setUserRole("USER");
 		
 		userService.save(vo);
 

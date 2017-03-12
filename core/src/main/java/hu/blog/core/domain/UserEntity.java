@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,10 +20,11 @@ public class UserEntity extends BaseEntity{
     private String email;
     private String gender;
     @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     private String location;
     private String phone;
     private String img;
-
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'USER'")
+    private String userRole;
 
 }
