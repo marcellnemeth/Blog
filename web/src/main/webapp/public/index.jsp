@@ -51,7 +51,7 @@
                 <a class="blog-nav-item" href="<c:url value="/Logout"/>">Logout</a>
             </c:if>
             <a class="blog-nav-item"
-               href="<c:url value="/secured/secured.jsp"/>">Users</a>
+               href="<c:url value="/secured/secured"/>">Users</a>
 
         </nav>
     </div>

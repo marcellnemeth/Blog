@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Servlet implementation class Login
  */
 @Controller
-@RequestMapping("/Login")
+@RequestMapping("/")
 public class LoginController {
 
 
@@ -25,7 +25,7 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(path="/")
+	@RequestMapping(path="Login")
 	protected String Login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

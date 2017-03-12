@@ -1,4 +1,4 @@
-var list;
+/*var list;
 var results;
 
 $(document).ready(function() {
@@ -60,4 +60,4 @@ function handleClick(id) {
 		});
 		
 	});
-}
+}*/

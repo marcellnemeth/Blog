@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class UserVO {
     private int id;
     private String firstName;
-    private String LastName;
+    private String lastName;
     private String username;
     private String password;
     private String email;
