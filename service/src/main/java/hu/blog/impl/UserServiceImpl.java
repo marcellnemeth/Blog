@@ -6,6 +6,7 @@ import hu.blog.mapper.UserMapper;
 import hu.blog.service.UserService;
 import hu.blog.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -15,6 +16,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Override
     public UserVO findByUserName(String username) {
         return UserMapper.toVo(userRepository.findByUsername(username));
@@ -28,6 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO save(UserVO vo) {
         UserEntity user = UserMapper.toDto(vo);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user = userRepository.save(user);
 
         return UserMapper.toVo(user);

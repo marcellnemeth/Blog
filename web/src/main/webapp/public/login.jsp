@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<form class="form-signin" style="border-radius:10px" action="<c:url value="/Login" ></c:url>" method="post">
+			<form class="form-signin" style="border-radius:10px" action="<c:url value="/login" ></c:url>" method="post">
 
 				<h1 class="form-signin-heading legend text-center" style="color: #FAFAFA">Please sign in</h1>
 				<div id="inputemail">
@@ -88,6 +88,9 @@
 				</div>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 					in</button>
+				<input type="hidden"
+					   name="${_csrf.parameterName}"
+					   value="${_csrf.token}"/>
 
 			</form>
 		</div>

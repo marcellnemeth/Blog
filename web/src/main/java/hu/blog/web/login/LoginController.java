@@ -11,53 +11,22 @@ import hu.blog.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Servlet implementation class Login
  */
 @Controller
-@RequestMapping("/")
 public class LoginController {
 
-
-	private static final String LOGIN_JSP_URL = "/";
-	private static final String SECURED_JSP_URL = "secured/secured";
-	@Autowired
-	UserService userService;
-
-	@RequestMapping(path="Login")
-	protected String Login(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		LoginForm loginForm = new LoginForm(request);
-
-		String username = loginForm.getUsername();
-
-		UserVO user = null;
-		//try {
-
-			user = userService.findByUserName(username);
-
-		//} catch (UserNotFoundException e) {
-		//	request.setAttribute("error", "Hibás felhasználónév vagy jelszó!");
-		//	//request.getRequestDispatcher(LOGIN_JSP_URL).forward(request, response);
-		//	return LOGIN_JSP_URL;
-		//}
-
-		if (user != null) {
-			String password = loginForm.getPassword();
-			if (user.getPassword().equals(password)) {
-				request.getSession().setAttribute("user", user);
-				//response.sendRedirect(SECURED_JSP_URL);
-				return SECURED_JSP_URL;
-			} else {
-				request.setAttribute("error", "Hibás felhasználónév vagy jelszó!");
-				//request.getRequestDispatcher(LOGIN_JSP_URL).forward(request, response);
-				return LOGIN_JSP_URL;
-			}
-		}
-			return LOGIN_JSP_URL;
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage(){
+		return "public/login";
 	}
 
+	@RequestMapping(value = "/login?error", method = RequestMethod.GET)
+	public String failedLogin(){
+		return "public/login";
+	}
 
 }
