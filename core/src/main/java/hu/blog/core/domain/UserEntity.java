@@ -28,10 +28,6 @@ public class UserEntity extends BaseEntity{
     private String phone;
     private String img;
     private String state = State.ACTIVE.getState();
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "MEMBER_USER_PROFILE",
-            joinColumns = {@JoinColumn(name = "USER_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "USER_PROFILE_ID")})
-    private Set<UserProfile> userProfiles = new HashSet<>();
+    private String userRole;
 
 }

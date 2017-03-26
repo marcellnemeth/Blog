@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html lang="en">
 <head>
@@ -32,22 +33,25 @@
 </head>
 
 <body style="background-color: white">
+
+
+
 <div class="blog-masthead">
         <div class="container">
             <nav class="blog-nav">
                 <a class="blog-nav-item active" href="<c:url value="/public/index.jsp"/>">Home</a>
 
                 <c:if test="${sessionScope.user ==null}">
-                    <a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
+				<a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
                 </c:if>
                 
                 <c:if test="${sessionScope.user ==null}">
                     <a class="blog-nav-item" href="<c:url value="/public/Registration.jsp"/>">Registration</a>
                 </c:if>
-                
-                <c:if test="${sessionScope.user !=null}">
-                    <a class="blog-nav-item" href="<c:url value="/Logout"/>">Logout</a>
-                </c:if>
+
+				<sec:authorize access="hasAnyRole('USER','ADMIN')">
+				<a class="blog-nav-item" href="<c:url value="/logout"/>">Logout</a>
+				</sec:authorize>
                 <a class="blog-nav-item"
                     href="<c:url value="/secured/secured.jsp"/>">Users</a>
 
@@ -67,7 +71,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<form class="form-signin" style="border-radius:10px" action="<c:url value="/login" ></c:url>" method="post">
+			<form class="form-signin" style="border-radius:10px" action="<c:url value="/Login" ></c:url>" method="post">
 
 				<h1 class="form-signin-heading legend text-center" style="color: #FAFAFA">Please sign in</h1>
 				<div id="inputemail">

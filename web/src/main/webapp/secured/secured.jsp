@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -42,12 +43,12 @@
     <div class="container">
         <nav class="blog-nav">
             <a class="blog-nav-item " href="<c:url value="/"/>">Home</a>
-            <c:if test="${sessionScope.user ==null}">
-                <a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
-            </c:if>
-            <c:if test="${sessionScope.user !=null}">
-                <a class="blog-nav-item" href="<c:url value="/Logout"/>">Logout</a>
-            </c:if>
+<c:if test="${sessionScope.user ==null}">
+            <a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
+</c:if>
+            <sec:authorize access="hasAnyRole('USER','ADMIN')">
+            <a class="blog-nav-item" href="<c:url value="/logout"/>">Logout</a>
+            </sec:authorize>
             <a class="blog-nav-item active"
                href="<c:url value="/secured/secured"/>">Users</a>
 

@@ -1,5 +1,5 @@
 package hu.blog.web.filter;
-
+/*
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -33,4 +33,4 @@ public class UserFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 
-}
+}]*/

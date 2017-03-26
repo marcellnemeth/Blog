@@ -1,6 +1,5 @@
 package hu.blog.web.security;
 
-import hu.blog.core.domain.UserProfile;
 import hu.blog.service.UserService;
 import hu.blog.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailService implements UserDetailsService{
@@ -28,14 +29,19 @@ public class CustomUserDetailService implements UserDetailsService{
             System.out.println("User not found");
             throw new UsernameNotFoundException("Username not found");
         }
-        return new User(user.getUsername(),user.getPassword(),user.getState().equals("Active"),true,true,true,getGrantedAuthorities(user));
+        return new User(user.getUsername(),user.getPassword(),user.getState().equals("Active"),true,true,true,setAuthorities(user.getUserRole()));
     }
 
-    private List<GrantedAuthority> getGrantedAuthorities(UserVO user){
-        List<GrantedAuthority> authorities = new ArrayList<>();
+    private static Set<GrantedAuthority> setAuthorities(String userRole){
+        Set<GrantedAuthority> authorities = new HashSet<>();
 
-        for(UserProfile userProfile : user.getUserProfiles()){
-            authorities.add(new SimpleGrantedAuthority("ROLE" + userProfile.getType()));
+        switch (userRole){
+            case "ADMIN":
+                authorities.add(new SimpleGrantedAuthority("ROLE_"+userRole));
+
+            case "USER":
+                authorities.add(new SimpleGrantedAuthority("ROLE_"+userRole));
+                break;
         }
         return authorities;
     }
