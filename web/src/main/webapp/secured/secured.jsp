@@ -42,8 +42,8 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item " href="<c:url value="/"/>">Home</a>
-<c:if test="${sessionScope.user ==null}">
+            <a class="blog-nav-item " href="<c:url value="/index"/>">Home</a>
+            <c:if test="${sessionScope.user ==null}">
             <a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
 </c:if>
             <sec:authorize access="hasAnyRole('USER','ADMIN')">

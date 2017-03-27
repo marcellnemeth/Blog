@@ -24,16 +24,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/secured/**").hasRole("USER")
+                .antMatchers("/index").hasRole("USER")
                 .and()
                 .formLogin()
-                .loginPage("/Login")
+                .loginPage("/login")
                 .successForwardUrl("/Login")
                 .failureUrl("/?error")
                 .loginProcessingUrl("/Login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
+                .and().csrf().disable();
 
     }
 

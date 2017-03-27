@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
 public class PostController {
 
     private PostVO vo = new PostVO();
@@ -32,10 +31,10 @@ public class PostController {
 
         postService.save(vo);
 
-        response.sendRedirect("/");
+        response.sendRedirect("/index");
     }
 
-    @RequestMapping(value = {"","/","public/index"})
+    @RequestMapping(value = "/index")
     public ModelAndView readPost(){
         List<PostVO> posts = (List<PostVO>) postService.findAll();
         return new ModelAndView("public/index","posts",posts);

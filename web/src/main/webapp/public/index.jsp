@@ -38,7 +38,7 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item active" href="<c:url value="/"/>">Home</a>
+            <a class="blog-nav-item active" href="<c:url value="/index"/>">Home</a>
 
             <c:if test="${sessionScope.user ==null}">
             <a class="blog-nav-item" href="<c:url value="/public/login.jsp"/>">Login</a>
@@ -77,7 +77,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Modal Header</h4>
                 </div>
-                <form id="blogForm" action="<c:url value="new" ></c:url>" method="post" style="padding: 20px">
+                <form id="blogForm" action="<c:url value="/new" ></c:url>" method="post" style="padding: 20px">
                     <div class="form-group">
                         <label for="blogFormName">Name</label>
                         <input type="text" class="form-control" id="blogFormName" name="blogFormName">
