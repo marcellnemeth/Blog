@@ -8,9 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-/**
- * Created by Marci on 2017. 01. 11..
- */
 @MappedSuperclass
 @Data
 @NoArgsConstructor

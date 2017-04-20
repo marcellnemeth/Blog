@@ -20,11 +20,9 @@ public class PostServiceImpl implements PostService {
     @Autowired
     PostRepository postRepository;
 
-
     @Override
     public void save(PostVO vo) {
         postRepository.save(PostMapper.toDto(vo));
-
     }
     @Override
     public Collection<PostVO> findAll()  {

@@ -1,3 +1,5 @@
+package hu.blog.web;
+
 import hu.blog.web.SpringContextConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

@@ -17,7 +17,7 @@ public class SpringContextConfig extends WebMvcConfigurerAdapter {
     public ViewResolver createViewResolver() {
 
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
     }
@@ -25,7 +25,7 @@ public class SpringContextConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/**")
-                .addResourceLocations("/");
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 }

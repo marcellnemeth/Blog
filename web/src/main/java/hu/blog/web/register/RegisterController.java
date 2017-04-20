@@ -12,14 +12,18 @@ import hu.blog.vo.UserVO;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/Register")
 public class RegisterController {
     @Autowired
 	private UserService userService;
 
     private UserVO vo = new UserVO();
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/register")
+	public String registerPage(){
+    	return "Registration";
+	}
+
+    @RequestMapping(value = "/Register/new", method = RequestMethod.POST)
     protected String Register(HttpServletRequest request) throws ServletException, IOException {
 	    request.setCharacterEncoding("UTF-8");
 	   
@@ -37,7 +41,6 @@ public class RegisterController {
 		vo.setImg("https://randomuser.me/api/portraits/men/11.jpg");
 		vo.setUserRole("USER");
 		userService.save(vo);
-		return "public/login";
+		return "login";
 	}
-
 }

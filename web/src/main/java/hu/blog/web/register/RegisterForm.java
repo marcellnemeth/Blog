@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 @Data
 @NoArgsConstructor
 public class RegisterForm {
-
     private String firstName;
     private String LastName;
     private String username;
@@ -31,7 +30,5 @@ public class RegisterForm {
         date_of_birth = request.getParameter("date");
         location = request.getParameter("address");
         phone = request.getParameter("phone");
-
     }
-
 }

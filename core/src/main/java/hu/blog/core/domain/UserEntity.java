@@ -29,5 +29,4 @@ public class UserEntity extends BaseEntity{
     private String img;
     private String state = State.ACTIVE.getState();
     private String userRole;
-
 }

@@ -27,12 +27,12 @@ public class LoginController {
             System.out.println(user);
         }
 
-        return "redirect:/index";
+        return "index";
     }
 
-    @RequestMapping(value = {"/login", "/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String loginPage(Model model) {
-        return "redirect:public/login.jsp";
+        return "login";
     }
 
 }

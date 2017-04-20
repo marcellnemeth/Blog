@@ -1,10 +1,5 @@
 package hu.blog.core.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.ToString;
-
-
 public enum State {
     ACTIVE("Active"),
     INACTIVE("Inactive"),

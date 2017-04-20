@@ -4,9 +4,9 @@ import hu.blog.service.PostService;
 import hu.blog.vo.PostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +20,8 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @RequestMapping(path = "/new", method = RequestMethod.POST)
-    public void createPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping(path = "/post/new", method = RequestMethod.POST)
+    public String createPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
 
         PostForm postForm = new PostForm(request);
@@ -31,13 +31,14 @@ public class PostController {
 
         postService.save(vo);
 
-        response.sendRedirect("/index");
+        return "index";
     }
 
-    @RequestMapping(value = "/index")
-    public ModelAndView readPost(){
+    @RequestMapping(value = "/")
+    public String readPost(Model model){
         List<PostVO> posts = (List<PostVO>) postService.findAll();
-        return new ModelAndView("public/index","posts",posts);
+        model.addAttribute("posts",posts);
+        return "index";
     }
 
 }
