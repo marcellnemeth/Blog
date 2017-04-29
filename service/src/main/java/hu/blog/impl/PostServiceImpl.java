@@ -32,4 +32,9 @@ public class PostServiceImpl implements PostService {
 
         return PostMapper.toVo(posts);
     }
+
+    @Override
+    public PostVO findById(long id) {
+        return PostMapper.toVo(postRepository.findById(id));
+    }
 }

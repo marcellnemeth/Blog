@@ -1,12 +1,12 @@
 body {
- 
+  background-color: white;
   padding-bottom: 40px;
-  background-color:#33b5e5;
+
 }
 
 form{
 	background-color: #33b5e5;
-	
+	margin-bottom: 40px;
 }
 
 .form-signin {

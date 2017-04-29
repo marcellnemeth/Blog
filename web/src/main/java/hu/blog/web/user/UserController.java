@@ -4,6 +4,8 @@ import hu.blog.service.UserService;
 import hu.blog.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,15 +19,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path = "/secured/secured")
-    public ModelAndView showUser(HttpServletResponse response)
+    @RequestMapping(path = "/users")
+    public String showUser(HttpServletResponse response,Model model)
             throws ServletException, IOException {
 
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
 
         List<UserVO> users = (List<UserVO>) userService.findAll();
-        System.out.println(users);
-        return new ModelAndView("secured/secured","users",users);
+        model.addAttribute("users",users);
+        return "secured";
     }
+
+    @RequestMapping(value = "/secured/{userId}")
+    public void userById(@PathVariable long userId,Model model){
+        UserVO userVO = userService.findById(userId);
+        model.addAttribute("userId",userVO);
+    }
+
 }

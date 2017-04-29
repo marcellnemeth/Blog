@@ -6,17 +6,16 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "blogpost",schema = "public")
+@Table(name = "blogpost", schema = "public")
 public class PostEntity extends BaseEntity {
     private String name;
     private String title;
-    @Column(name = "textarea")
+    @Column(name = "textarea", columnDefinition = "text")
     private String textArea;
-    @Column(name = "my_date")
-    private Date date;
+    private LocalDateTime date;
 }

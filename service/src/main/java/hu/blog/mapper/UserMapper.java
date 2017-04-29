@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserMapper {
-    private static Mapper mapper = new DozerBeanMapper();
+    private static Mapper mapper = Mappers.getDozerBeanMapper();
 
     public static UserVO toVo(UserEntity dto){
         if(dto == null){

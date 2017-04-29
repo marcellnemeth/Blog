@@ -8,5 +8,7 @@ public interface PostService {
     void save(PostVO vo);
     
     Collection<PostVO> findAll();
+
+    PostVO findById(long id);
     
 }

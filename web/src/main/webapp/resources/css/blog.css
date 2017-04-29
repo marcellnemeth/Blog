@@ -5,6 +5,7 @@
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
+  background-color: white !important;
 }
 
 h1, .h1,
@@ -155,9 +156,10 @@ h6, .h6 {
  */
 
 .blog-footer {
-  padding: 40px 0;
-  color: #999;
   text-align: center;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
 }

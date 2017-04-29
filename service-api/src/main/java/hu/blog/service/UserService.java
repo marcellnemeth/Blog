@@ -10,4 +10,6 @@ public interface UserService {
     Collection<UserVO> findAll();
     
     UserVO save(UserVO vo);
+
+    UserVO findById(long id);
 }

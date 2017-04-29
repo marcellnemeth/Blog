@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
 
         return UserMapper.toVo(user);
     }
+
+    @Override
+    public UserVO findById(long id) {
+        return UserMapper.toVo(userRepository.findById(id));
+    }
 }

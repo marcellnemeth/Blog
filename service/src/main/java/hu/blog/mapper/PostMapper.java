@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class PostMapper {
-    private static Mapper mapper = new DozerBeanMapper();
+    private static Mapper mapper = Mappers.getDozerBeanMapper();
 
     public static PostVO toVo(PostEntity dto){
         if(dto == null){
